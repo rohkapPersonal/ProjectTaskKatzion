@@ -2,6 +2,7 @@
 ### Code related to Katzion project task
 
 ### Getting Started
+Project given by Katzion to perform outbound integration with 3rd party system.
 
 #### Description
 1. The project is to send Transaction and its child TransactionItem objects records to 3rd party one by one. 
