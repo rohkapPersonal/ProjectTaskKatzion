@@ -32,6 +32,16 @@ Project given by Katzion to perform outbound integration with 3rd party system.
     - Services__mdt
     - Rest_API_Field_Mapping__mdt
     - Rest_API_Sections__mdt
+ 4. **Remote Site Settings**
+    - TestURL.remoteSite (will change with real endpoints URL)
+  
+  #### Objects and their usages
+  1. Transaction__c - Parent Object
+  2. TransactionItem__c - Child of Transaction__c object
+  3. Error_Log__c - To capture all the errors/exception occurred in the apex.
+  4. Services_mdt - To configure all the end points and its related details
+  5. Rest_API_Field_Mapping__mdt - To configure restfield mappint and sObject name, api name, its fields details. To fetch them dynamically and on the need basis. This metadata will also help when we have inbound integration to store the mapping of restfield and sObject field
+  6. Rest_API_Sections__mdt - To configure which section of JSON the field is related (future enhancements)
   
   #### Flow
   1. On creation, deletion or undelete of Transaction Item, its trigger checks Number of Transaction Items with Total Counts field value on its parent Transaction.
