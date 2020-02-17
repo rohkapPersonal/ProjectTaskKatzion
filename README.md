@@ -2,7 +2,9 @@
 ### Code related to Katzion project task
 
 ### Getting Started
-1. The project is including parent Transaction and its child TransactionItem object. 
+
+#### Description
+1. The project is to send Transaction and its child TransactionItem objects records to 3rd party one by one. 
 2. Logic needs to pick those TransactionItems and its parent records where number of TransactionItems records become equal to Transaction Count (field on Transaction).
 3. Then an integration to 3rd party occurs, where 1st logic sends Transaction Items. On success message from the endpoint, logic picks the details of the Parent Transaction record and send it to the same endpoint.
 
