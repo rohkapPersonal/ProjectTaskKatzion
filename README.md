@@ -8,27 +8,27 @@
 
 #### Components Invovled
 1. **Classes**
-  - Constants
-  - Utilities
-  - TriggerHandler
-  - TransactionItemTriggerHandler
-  - INTEG_TransactionItem_OB_Queueable
-  - INTEG_Transaction_OB_ServiceHandler
-  - INTEG_TransactionItem_OB_ServiceHandler
-  - TestDataFactory
-  - Test_TransactionItemTriggerHandler
-  - Test_INTEGTransactionItemOBSerHandler
-  - Test_INTEGTransactionOBSerHandler
-  - Utilities_Test
+    - Constants
+    - Utilities
+    - TriggerHandler
+    - TransactionItemTriggerHandler
+    - INTEG_TransactionItem_OB_Queueable
+    - INTEG_Transaction_OB_ServiceHandler
+    - INTEG_TransactionItem_OB_ServiceHandler
+    - TestDataFactory
+    - Test_TransactionItemTriggerHandler
+    - Test_INTEGTransactionItemOBSerHandler
+    - Test_INTEGTransactionOBSerHandler
+    - Utilities_Test
  2. **Triggers**
-   - TransactionItemTrigger
+    - TransactionItemTrigger
  3. **Objects**
-   - Transaction__c
-   - TransactionItem__c
-   - Error_Log__c
-   - Services__mdt
-   - Rest_API_Field_Mapping__mdt
-   - Rest_API_Sections__mdt
+    - Transaction__c
+    - TransactionItem__c
+    - Error_Log__c
+    - Services__mdt
+    - Rest_API_Field_Mapping__mdt
+    - Rest_API_Sections__mdt
   
   #### Flow
   1. On creation, deletion or undelete of Transaction Item, its trigger checks Number of Transaction Items with Total Counts field value on its parent Transaction.
