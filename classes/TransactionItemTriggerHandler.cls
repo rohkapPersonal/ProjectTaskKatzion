@@ -146,6 +146,8 @@ public class TransactionItemTriggerHandler extends TriggerHandler {
     public static void sendTransactionItems(set<Id> transactionIdsSet){
         try{
             Id jobID = system.enqueueJob(new INTEG_TransactionItem_OB_Queueable(transactionIdsSet, Constants.TRANSACTIONITEM_OBJ_API_NAME));
-        }catch(exception ex){}
+        }catch(exception ex){
+            Utilities.createExceptionLog(ex,'','Exception','TransactionItem__c','','','TransactionItemTriggerHandler');
+        }
     }
 }

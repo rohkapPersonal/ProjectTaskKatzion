@@ -22,6 +22,7 @@ public class TestDataFactory {
     		trans.Name = 'test'+ i;
     		trans.Transaction_Count__c = 1;
     		trans.Total_Discount__c = 5.00;
+            trans.Total_Cost__c = 1000.00;
     		listOfTransaction.add(trans);
     	}
     	return listOfTransaction;

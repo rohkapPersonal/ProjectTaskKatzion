@@ -1,11 +1,19 @@
+/** 
+* 
+* @className        Utilities
+* @description      Utility class for common methods
+* @author           Rohit  
+* @date created     13-FEB-2020
+* @last change
+**/
 public class Utilities {
     
-    /**
-    * @methodname getAuthenticationToken 
-    * @description Retrieves the OAuth Token for the HTTP callouts 
-    * @param    sServiceName- Name of custom Metadata record which stores the Details of OAuth end point.
-    * @return   Token type and Access token
-    */
+/**
+* @methodname getAuthenticationToken 
+* @description Retrieves the OAuth Token for the HTTP callouts 
+* @param    sServiceName- Name of custom Metadata record which stores the Details of OAuth end point.
+* @return   Token type and Access token
+*/
 
     private static Services__mdt objAuthService {get;set;}
 
@@ -60,7 +68,59 @@ public class Utilities {
         return sFinalReturnValue;
     }
 
-	//class to have Access token details
+/*
+*Method Name    : createExceptionLog
+*Description    : Create Exception Log record
+*Return Type    : void
+*Parameter      : Exception e, string integrationName, string severity, string obj, string response, 
+                  String request, string classTriggerName
+*/
+    public static void createExceptionLog(Exception e, string integrationName, string severity, string obj, string response, String request, string classTriggerName)
+    {
+        Error_Log__c errLog = new  Error_Log__c();
+        if(e!=null){
+            errLog.Exception_Error_Description__c = e.getMessage();
+            errLog.Stack_Trace__c = e.getStackTraceString();
+        }           
+        errLog.Running_User__c = UserInfo.getUserId();       
+        errLog.Integration_Name__c = integrationName;
+        errLog.Severity__c = severity;
+        errLog.Response__c = response;
+        errLog.Request_Body__c = request;
+        errLog.Object__c = obj;
+        errLog.Class_Trigger_Name__c = classTriggerName;
+        insert errlog;
+    }
+
+
+/*
+*Method Name    : createExceptionLog
+*Description    : Create Exception Log record
+*Return Type    : void
+*Parameter      : string errorMessage,string statusCode, string integrationName, string severity, 
+                string obj, string response, String request, string classTriggerName
+*/
+    public static void createExceptionLog(string errorMessage,string statusCode, string integrationName, string severity, string obj, string response, String request, string classTriggerName)
+    {
+        Error_Log__c errLog = new  Error_Log__c();
+        errLog.Exception_Error_Description__c = string.isNotBlank(errorMessage) ? errorMessage : '';
+        errLog.Stack_Trace__c = string.isNotBlank(statusCode)? statusCode: '';
+                
+        errLog.Running_User__c = UserInfo.getUserId();       
+        errLog.Integration_Name__c = integrationName;
+        errLog.Severity__c = severity;
+        errLog.Response__c = response;
+        errLog.Request_Body__c = request;
+        errLog.Object__c = obj;
+        errLog.Class_Trigger_Name__c = classTriggerName;
+        insert errlog;
+    }
+
+/*
+ *  @name AccessTokenWrapper
+ *  @Description  Wrapper to hold Access Token details
+ *  @author Rohit 
+*/
     public class AccessTokenWrapper { 
         public String access_token; 
         public String token_type;
@@ -71,7 +131,11 @@ public class Utilities {
         public String error;
     }
 
-    //Integration response wrapper
+/*
+ *  @name ResponseWrapper
+ *  @Description  Wrapper to hold HTTP Response details
+ *  @author Rohit 
+*/
     public class ResponseWrapper
     {
         public string Code;
